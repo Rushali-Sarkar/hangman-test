@@ -1,31 +1,18 @@
 import random
 
-
 def load_words():
-    """
-    this function help to load more word by updating word_list (list)    
-    Example :-
-        word_list = ["learning", "kindness", "joy", "kiet", "good"] (old)
-        word_list = ["learning", "kindness", "joy", "kiet", "good" ,"hello"] (new)
-    """
-    word_list = ["learning", "kindness", "joy", "kiet", "good"]
-
-    # uncomment the below for testing
-    
-    # WORDLIST_FILENAME = "words.txt"
-    # inFile = open(WORDLIST_FILENAME, 'r', 0)
-    # line = inFile.readline()
-    # word_list = string.split(line)
-
+    WORDLIST_FILE = './words.txt'
+    words = open(WORDLIST_FILE)
+    word_list = []
+    for each in words:
+        current_line_words = each.split()
+        word_list += current_line_words
     return word_list
 
+PROCESSED_WORD_LIST = load_words()
 
 def choose_word():
-    """
-    word_list (list): list of words (strings)
-    this function return one random world from list
-    """
-    word_list = load_words()
+    word_list = PROCESSED_WORD_LIST
     secret_word = random.choice(word_list)
     secret_word = secret_word.lower()
     return secret_word
